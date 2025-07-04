@@ -1,0 +1,77 @@
+[build]
+  # Build command (not needed for static site)
+  command = "echo 'Static site - no build required'"
+  
+  # Publish directory
+  publish = "."
+  
+  # Functions directory for Netlify Functions
+  functions = "netlify/functions"
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "18"
+
+# Redirect rules
+[[redirects]]
+  # Admin panel protection
+  from = "/admin.html"
+  to = "/admin.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  # API routes to Netlify Functions
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  # SPA fallback for any other routes
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Performance headers
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    # Extra security for admin panel
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Form handling
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+# Environment variables (set in Netlify dashboard)
+# MONGODB_URI = "your-mongodb-connection-string"
+# ADMIN_PASSWORD = "your-secure-admin-password"

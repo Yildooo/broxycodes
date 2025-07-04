@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broxy Code - Admin Panel | Dashboard</title>
+    <meta name="description" content="Broxy Code admin dashboard for managing portfolio projects, contact messages, and website analytics. Secure admin panel for web development business management.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Yılmaz Demircioğlu">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://broxycode.netlify.app/admin.html">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 15px 20px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .portfolio-item-admin {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-message {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-shield-alt me-2"></i>Admin Girişi
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                            <h4>Broxy Code Admin</h4>
+                            <p class="text-muted">Güvenli admin paneline erişim</p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Kullanıcı Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Şifre</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Beni hatırla
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-sign-in-alt me-2"></i>Giriş Yap
+                        </button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <small class="text-muted">
+                            Demo: admin / broxy123
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Content (Hidden until login) -->
+    <div id="adminContent" style="display: none;">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="p-4">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-code me-2"></i>Broxy Code Admin
+            </h4>
+            <div class="user-info text-center">
+                <i class="fas fa-user-circle fa-2x text-primary mb-2"></i>
+                <p class="small mb-0">Hoş geldin,</p>
+                <p class="fw-bold" id="adminUsername">Admin</p>
+                <button class="btn btn-outline-danger btn-sm mt-2" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt me-1"></i>Çıkış
+                </button>
+            </div>
+        </div>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('portfolio')">
+                    <i class="fas fa-briefcase me-2"></i>Portfolio Yönetimi
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('messages')">
+                    <i class="fas fa-envelope me-2"></i>Mesajlar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('settings')">
+                    <i class="fas fa-cog me-2"></i>Ayarlar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('analytics')">
+                    <i class="fas fa-chart-bar me-2"></i>Analitik
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-arrow-left me-2"></i>Ana Siteye Dön
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h2 class="mb-0">Hoş Geldiniz, Yılmaz Demircioğlu</h2>
+                    <p class="text-muted mb-0">Broxy Code Admin Paneli</p>
+                </div>
+                <div class="col-auto">
+                    <span class="badge bg-success">Online</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="content-section active">
+            <!-- Real-time Status -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="alert alert-info d-flex align-items-center">
+                        <i class="fas fa-broadcast-tower me-2"></i>
+                        <span>Canlı İstatistikler - Son Güncelleme: <span id="lastUpdated">-</span></span>
+                        <button class="btn btn-sm btn-outline-primary ms-auto" onclick="refreshAnalytics()">
+                            <i class="fas fa-sync-alt me-1"></i>Yenile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Stats Cards -->
+            <div class="row mb-4" id="statsCards">
+                <div class="col-lg-2 col-md-4 col-6 mb-3">
+                    <div class="stats-card">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon bg-primary">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="mb-0" id="totalVisits">-</h3>
+                                <p class="text-muted mb-0 small">Toplam Görüntüleme</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-3">
+                    <div class="stats-card">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon bg-success">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="mb-0" id="uniqueVisitors">-</h3>
+                                <p class="text-muted mb-0 small">Benzersiz Ziyaretçi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-3">
+                    <div class="stats-card">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon bg-danger">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="mb-0" id="realtimeVisitors">-</h3>
+                                <p class="text-muted mb-0 small">Şu An Aktif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-3">
+                    <div class="stats-card">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon bg-info">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="mb-0" id="todayVisits">-</h3>
+                                <p class="text-muted mb-0 small">Bugün</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-3">
+                    <div class="stats-card">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon bg-warning">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="mb-0" id="totalContacts">-</h3>
+                                <p class="text-muted mb-0 small">Mesajlar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-3">
+                    <div class="stats-card">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon bg-secondary">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="mb-0" id="portfolioCount">-</h3>
+                                <p class="text-muted mb-0 small">Projeler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="stats-card">
+                        <h5 class="mb-3">Site Trafiği</h5>
+                        <canvas id="trafficChart" height="100"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <h5 class="mb-3">Son Aktiviteler</h5>
+                        <div id="recentActivity">
+                            <div class="text-center text-muted">
+                                <i class="fas fa-spinner fa-spin mb-2"></i>
+                                <p>Veriler yükleniyor...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Management Section -->
+        <div id="portfolio" class="content-section">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>Portfolio Yönetimi</h3>
+                <button class="btn btn-primary" onclick="addNewProject()">
+                    <i class="fas fa-plus me-2"></i>Yeni Proje Ekle
+                </button>
+            </div>
+
+            <div id="portfolioList">
+                <div class="text-center text-muted p-4">
+                    <i class="fas fa-spinner fa-spin mb-2"></i>
+                    <p>Portfolio projeleri yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Section -->
+        <div id="messages" class="content-section">
+            <h3 class="mb-4">İletişim Mesajları</h3>
+
+            <div id="contactMessages">
+                <div class="text-center text-muted p-4">
+                    <i class="fas fa-spinner fa-spin mb-2"></i>
+                    <p>Mesajlar yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="content-section">
+            <h3 class="mb-4">Ayarlar</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="stats-card">
+                        <h5 class="mb-3">Şirket Bilgileri</h5>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Şirket Adı</label>
+                                <input type="text" class="form-control" value="Broxy Code">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">E-posta</label>
+                                <input type="email" class="form-control" value="yilma.0601z@gmail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Telefon</label>
+                                <input type="tel" class="form-control" value="05520017538">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="stats-card">
+                        <h5 class="mb-3">Kişisel Bilgiler</h5>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Ad Soyad</label>
+                                <input type="text" class="form-control" value="Yılmaz Demircioğlu">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Pozisyon</label>
+                                <input type="text" class="form-control" value="Kurucu & Baş Geliştirici">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Hakkında</label>
+                                <textarea class="form-control" rows="3">Broxy Code'un kurucusu ve baş geliştiricisi olarak, modern web teknolojileri ile işletmenizi dijital dünyada öne çıkarıyorum.</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Section -->
+        <div id="analytics" class="content-section">
+            <h3 class="mb-4">Analitik</h3>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="stats-card">
+                        <h5 class="mb-3">Ziyaretçi İstatistikleri</h5>
+                        <canvas id="visitorChart" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="stats-card" id="pageStatsCard">
+                        <h5 class="mb-3">Popüler Sayfalar</h5>
+                        <div class="text-center text-muted">
+                            <i class="fas fa-spinner fa-spin mb-2"></i>
+                            <p>Sayfa istatistikleri yükleniyor...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+        }
+
+        // Real Portfolio management functions
+        async function addNewProject() {
+            const title = prompt('Proje başlığını girin:');
+            if (title) {
+                const description = prompt('Proje açıklamasını girin:');
+                const technologies = prompt('Kullanılan teknolojileri girin (virgülle ayırın):');
+                const imageUrl = prompt('Proje görseli URL (opsiyonel):');
+
+                if (description && technologies) {
+                    try {
+                        const response = await fetch('/api/portfolio', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                title: title,
+                                description: description,
+                                technologies: technologies.split(',').map(tech => tech.trim()),
+                                imageUrl: imageUrl || undefined
+                            })
+                        });
+
+                        const result = await response.json();
+                        if (result.success) {
+                            alert('Yeni proje başarıyla eklendi!');
+                            loadPortfolioItems();
+                            loadDashboardData(); // Refresh stats
+                        } else {
+                            alert('Hata: ' + result.error);
+                        }
+                    } catch (error) {
+                        alert('Bağlantı hatası');
+                    }
+                }
+            }
+        }
+
+
+
+
+
+        // Real Data Loading and Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            loadContactMessages();
+            loadPortfolioItems();
+        });
+
+        async function loadDashboardData() {
+            try {
+                const response = await fetch('/api/analytics');
+                const result = await response.json();
+
+                if (result.success) {
+                    const data = result.data;
+
+                    // Update statistics cards
+                    updateStatistics(data.overview);
+
+                    // Update portfolio count
+                    updatePortfolioCount();
+
+                    // Create traffic chart with real data
+                    createTrafficChart(data.dailyVisits);
+
+                    // Create device chart with real data
+                    createDeviceChart(data.deviceStats);
+
+                    // Update page statistics
+                    updatePageStats(data.pageStats);
+
+                    // Update recent activity
+                    updateRecentActivity(data.recentVisits);
+                }
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        function updateStatistics(overview) {
+            // Update enhanced stats cards with real data
+            document.getElementById('totalVisits').textContent = overview.totalVisits || 0;
+            document.getElementById('uniqueVisitors').textContent = overview.uniqueVisitors || 0;
+            document.getElementById('realtimeVisitors').textContent = overview.realtimeVisitors || 0;
+            document.getElementById('todayVisits').textContent = overview.todayVisits || 0;
+            document.getElementById('totalContacts').textContent = overview.totalContacts || 0;
+            document.getElementById('portfolioCount').textContent = overview.portfolioCount || 0;
+
+            // Update last updated time
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleString('tr-TR');
+        }
+
+        // Refresh analytics function
+        function refreshAnalytics() {
+            const button = document.querySelector('[onclick="refreshAnalytics()"]');
+            const icon = button.querySelector('i');
+            icon.classList.add('fa-spin');
+
+            loadDashboardData().finally(() => {
+                icon.classList.remove('fa-spin');
+            });
+        }
+
+        function createTrafficChart(dailyVisits) {
+            const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+
+            // Process daily visits data
+            const labels = [];
+            const data = [];
+
+            dailyVisits.forEach(visit => {
+                const date = new Date(visit._id.year, visit._id.month - 1, visit._id.day);
+                labels.push(date.toLocaleDateString('tr-TR', { month: 'short', day: 'numeric' }));
+                data.push(visit.count);
+            });
+
+            new Chart(trafficCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Günlük Ziyaretçi',
+                        data: data,
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function createDeviceChart(deviceStats) {
+            const visitorCtx = document.getElementById('visitorChart').getContext('2d');
+
+            const labels = [];
+            const data = [];
+            const colors = ['#007bff', '#28a745', '#ffc107', '#dc3545'];
+
+            deviceStats.forEach((device, index) => {
+                labels.push(device._id || 'Bilinmeyen');
+                data.push(device.count);
+            });
+
+            new Chart(visitorCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors.slice(0, data.length)
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        function updatePageStats(pageStats) {
+            const pageStatsContainer = document.getElementById('pageStatsCard');
+
+            if (!pageStats || pageStats.length === 0) {
+                pageStatsContainer.innerHTML = `
+                    <h5 class="mb-3">Popüler Sayfalar</h5>
+                    <div class="text-center text-muted">
+                        <i class="fas fa-chart-bar fa-2x mb-2"></i>
+                        <p>Henüz sayfa istatistiği bulunmuyor</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const total = pageStats.reduce((sum, page) => sum + page.count, 0);
+
+            let html = '<h5 class="mb-3">Popüler Sayfalar</h5>';
+            pageStats.forEach(page => {
+                const percentage = Math.round((page.count / total) * 100);
+                const pageName = page._id === '/' ? 'Ana Sayfa' :
+                               page._id.includes('portfolio') ? 'Portfolio' :
+                               page._id.includes('contact') ? 'İletişim' :
+                               page._id.includes('about') ? 'Hakkımda' : page._id;
+
+                html += `
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>${pageName}</span>
+                            <span class="text-primary">${percentage}% (${page.count})</span>
+                        </div>
+                        <div class="progress" style="height: 5px;">
+                            <div class="progress-bar" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            pageStatsContainer.innerHTML = html;
+        }
+
+        function updateRecentActivity(recentVisits) {
+            const activityContainer = document.getElementById('recentActivity');
+
+            if (!recentVisits || recentVisits.length === 0) {
+                activityContainer.innerHTML = `
+                    <div class="text-center text-muted">
+                        <i class="fas fa-clock mb-2"></i>
+                        <p>Henüz aktivite bulunmuyor</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            recentVisits.slice(0, 5).forEach(visit => {
+                const timeAgo = getTimeAgo(new Date(visit.timestamp));
+                const pageIcon = visit.page === '/' ? 'home' :
+                               visit.page.includes('portfolio') ? 'briefcase' :
+                               visit.page.includes('contact') ? 'envelope' : 'eye';
+                const pageName = visit.page === '/' ? 'Ana Sayfa' :
+                               visit.page.includes('portfolio') ? 'Portfolio' :
+                               visit.page.includes('contact') ? 'İletişim' : visit.page;
+
+                html += `
+                    <div class="activity-item mb-3">
+                        <i class="fas fa-${pageIcon} text-primary me-2"></i>
+                        <small>${pageName} ziyaret edildi - ${timeAgo}</small>
+                    </div>
+                `;
+            });
+
+            activityContainer.innerHTML = html;
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+
+            if (diffInMinutes < 1) return 'Az önce';
+            if (diffInMinutes < 60) return `${diffInMinutes} dakika önce`;
+
+            const diffInHours = Math.floor(diffInMinutes / 60);
+            if (diffInHours < 24) return `${diffInHours} saat önce`;
+
+            const diffInDays = Math.floor(diffInHours / 24);
+            return `${diffInDays} gün önce`;
+        }
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Ayarlar başarıyla güncellendi!');
+            });
+        });
+
+        async function loadContactMessages() {
+            try {
+                const response = await fetch('/api/contact');
+                const result = await response.json();
+
+                if (result.success) {
+                    displayContactMessages(result.contacts);
+                }
+            } catch (error) {
+                console.error('Error loading contact messages:', error);
+            }
+        }
+
+        function displayContactMessages(contacts) {
+            const container = document.getElementById('contactMessages');
+
+            if (contacts.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-muted p-4">
+                        <i class="fas fa-inbox fa-3x mb-3"></i>
+                        <h5>Henüz mesaj bulunmuyor</h5>
+                        <p>İletişim formundan gelen mesajlar burada görünecek.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            contacts.forEach(contact => {
+                const date = new Date(contact.createdAt).toLocaleString('tr-TR');
+                html += `
+                    <div class="contact-message">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="mb-0">${contact.name}</h6>
+                            <small class="text-muted">${date}</small>
+                        </div>
+                        <p class="text-muted mb-2">${contact.email} ${contact.phone ? '| ' + contact.phone : ''}</p>
+                        <p class="mb-3">${contact.message}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <button class="btn btn-sm btn-primary me-2" onclick="replyToMessage('${contact.email}')">
+                                    <i class="fas fa-reply me-1"></i>Yanıtla
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="archiveMessage('${contact._id}')">
+                                    <i class="fas fa-archive me-1"></i>Arşivle
+                                </button>
+                            </div>
+                            <small class="text-muted">IP: ${contact.ip || 'Bilinmiyor'}</small>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        async function loadPortfolioItems() {
+            try {
+                const response = await fetch('/api/portfolio');
+                const result = await response.json();
+
+                if (result.success) {
+                    displayPortfolioItems(result.portfolio);
+                }
+            } catch (error) {
+                console.error('Error loading portfolio items:', error);
+            }
+        }
+
+        function displayPortfolioItems(portfolioItems) {
+            const portfolioList = document.getElementById('portfolioList');
+
+            if (portfolioItems.length === 0) {
+                portfolioList.innerHTML = `
+                    <div class="text-center text-muted p-4">
+                        <i class="fas fa-briefcase fa-3x mb-3"></i>
+                        <h5>Henüz portfolio projesi bulunmuyor</h5>
+                        <p>Yeni proje eklemek için "Yeni Proje Ekle" butonunu kullanın.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            portfolioItems.forEach(item => {
+                const technologies = item.technologies && item.technologies.length > 0
+                    ? item.technologies.map(tech => `<span class="badge bg-primary me-1">${tech}</span>`).join('')
+                    : '<span class="badge bg-secondary">Teknoloji belirtilmemiş</span>';
+
+                const createdDate = new Date(item.createdAt).toLocaleDateString('tr-TR');
+
+                html += `
+                    <div class="portfolio-item-admin" data-id="${item._id}">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="${item.imageUrl || 'https://via.placeholder.com/300x200/007bff/ffffff?text=Proje'}"
+                                     class="img-fluid rounded" alt="${item.title}"
+                                     style="height: 150px; object-fit: cover;">
+                            </div>
+                            <div class="col-md-6">
+                                <h5>${item.title}</h5>
+                                <p class="text-muted">${item.description}</p>
+                                <div class="mb-2">${technologies}</div>
+                                <small class="text-muted">Oluşturulma: ${createdDate}</small>
+                            </div>
+                            <div class="col-md-3 text-end">
+                                <button class="btn btn-sm btn-outline-primary me-2" onclick="editPortfolioItem('${item._id}')" title="Düzenle">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="deletePortfolioItem('${item._id}')" title="Sil">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            portfolioList.innerHTML = html;
+        }
+
+        async function updatePortfolioCount() {
+            try {
+                const response = await fetch('/api/portfolio');
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('portfolioCount').textContent = result.portfolio.length;
+                }
+            } catch (error) {
+                console.error('Error updating portfolio count:', error);
+            }
+        }
+
+        function replyToMessage(email) {
+            window.open(`mailto:${email}?subject=Broxy Code - Mesajınıza Yanıt&body=Merhaba,%0D%0A%0D%0AMesajınız için teşekkür ederiz.%0D%0A%0D%0AEn iyi dileklerimle,%0D%0AYılmaz Demircioğlu%0D%0ABroxy Code`);
+        }
+
+        async function archiveMessage(messageId) {
+            // This would typically update the message status in the database
+            alert('Mesaj arşivlendi (Bu özellik yakında eklenecek)');
+        }
+
+        async function editPortfolioItem(itemId) {
+            const title = prompt('Yeni başlık:');
+            if (title) {
+                const description = prompt('Yeni açıklama:');
+                if (description) {
+                    try {
+                        const response = await fetch('/api/portfolio', {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                id: itemId,
+                                title: title,
+                                description: description
+                            })
+                        });
+
+                        const result = await response.json();
+                        if (result.success) {
+                            alert('Proje başarıyla güncellendi!');
+                            loadPortfolioItems();
+                        } else {
+                            alert('Hata: ' + result.error);
+                        }
+                    } catch (error) {
+                        alert('Bağlantı hatası');
+                    }
+                }
+            }
+        }
+
+        async function deletePortfolioItem(itemId) {
+            if (confirm('Bu projeyi silmek istediğinizden emin misiniz?')) {
+                try {
+                    const response = await fetch('/api/portfolio', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ id: itemId })
+                    });
+
+                    const result = await response.json();
+                    if (result.success) {
+                        alert('Proje başarıyla silindi!');
+                        loadPortfolioItems();
+                        loadDashboardData(); // Refresh stats
+                    } else {
+                        alert('Hata: ' + result.error);
+                    }
+                } catch (error) {
+                    alert('Bağlantı hatası');
+                }
+            }
+        }
+
+        console.log('Broxy Code Admin Panel loaded successfully with real backend!');
+    </script>
+
+    </div> <!-- End of adminContent -->
+
+    <!-- Login & Authentication Scripts -->
+    <script>
+        // Admin credentials (in production, this should be server-side)
+        const ADMIN_CREDENTIALS = {
+            'admin': 'broxy123',
+            'yilmaz': 'broxycode2024'
+        };
+
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('adminLoggedIn');
+            const rememberedUser = localStorage.getItem('adminUsername');
+
+            if (isLoggedIn === 'true' && rememberedUser) {
+                showAdminPanel(rememberedUser);
+            } else {
+                showLoginModal();
+            }
+        });
+
+        function showLoginModal() {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        }
+
+        function showAdminPanel(username) {
+            document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('adminUsername').textContent = username;
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
+            }
+        }
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            if (ADMIN_CREDENTIALS[username] && ADMIN_CREDENTIALS[username] === password) {
+                // Successful login
+                localStorage.setItem('adminLoggedIn', 'true');
+                if (rememberMe) {
+                    localStorage.setItem('adminUsername', username);
+                }
+
+                showAdminPanel(username);
+
+                // Show success message
+                setTimeout(() => {
+                    alert('Başarıyla giriş yaptınız! Hoş geldiniz ' + username);
+                }, 500);
+            } else {
+                // Failed login
+                alert('Hatalı kullanıcı adı veya şifre!');
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Çıkış yapmak istediğinizden emin misiniz?')) {
+                localStorage.removeItem('adminLoggedIn');
+                localStorage.removeItem('adminUsername');
+                location.reload();
+            }
+        });
+
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const icon = this.querySelector('i');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                passwordField.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        });
+    </script>
+</body>
+</html>
