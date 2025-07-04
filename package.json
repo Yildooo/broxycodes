@@ -1,0 +1,32 @@
+{
+  "name": "broxy-code-website",
+  "version": "1.0.0",
+  "description": "Broxy Code - Professional Web Development Services",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Static build complete - no build step required'",
+    "start": "netlify dev",
+    "deploy": "netlify deploy",
+    "deploy:prod": "netlify deploy --prod"
+  },
+  "keywords": [
+    "web-development",
+    "broxy-code",
+    "portfolio",
+    "yilmaz-demircioglu"
+  ],
+  "author": "Yılmaz Demircioğlu <yilma.0601z@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.3.0",
+    "validator": "^13.11.0",
+    "nodemailer": "^6.9.8"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

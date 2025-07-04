@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /api/
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://broxycode.netlify.app/sitemap.xml
+
+# Broxy Code - Professional Web Development Services
+# Modern, responsive, and SEO-optimized websites
+# E-commerce, corporate websites, and portfolio design
+# Technologies: React, Node.js, HTML5, CSS3, JavaScript
+# Founder: Yılmaz Demircioğlu
+# Contact: yilma.0601z@gmail.com
+# Phone: +90-552-001-7538
+# Location: Turkey
+# Services: Web development, web design, SEO optimization

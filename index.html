@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>Broxy Code - Profesyonel Web Tasarım ve Geliştirme | Yılmaz Demircioğlu</title>
+    <meta name="title" content="Broxy Code - Profesyonel Web Tasarım ve Geliştirme | Yılmaz Demircioğlu">
+    <meta name="description" content="Broxy Code ile modern, responsive ve SEO uyumlu web siteleri. E-ticaret, kurumsal website, portfolio tasarımı. Türkiye'nin en iyi web geliştirme hizmetleri. Yılmaz Demircioğlu tarafından profesyonel web çözümleri.">
+    <meta name="keywords" content="broxy code, web tasarım, web geliştirme, Yılmaz Demircioğlu, web developer Turkey, e-ticaret sitesi, kurumsal website, portfolio tasarımı, responsive web design, SEO optimizasyonu, HTML CSS JavaScript, React Node.js, web developer Türkiye">
+    <meta name="author" content="Yılmaz Demircioğlu">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Turkish">
+    <meta name="geo.region" content="TR">
+    <meta name="geo.placename" content="Turkey">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://broxycode.netlify.app/">
+    <meta property="og:title" content="Broxy Code - Profesyonel Web Tasarım ve Geliştirme">
+    <meta property="og:description" content="Modern, responsive ve SEO uyumlu web siteleri. E-ticaret, kurumsal website, portfolio tasarımı. Türkiye'nin en iyi web geliştirme hizmetleri.">
+    <meta property="og:image" content="https://broxycode.netlify.app/assets/broxy-code-og-image.jpg">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:site_name" content="Broxy Code">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://broxycode.netlify.app/">
+    <meta property="twitter:title" content="Broxy Code - Profesyonel Web Tasarım ve Geliştirme">
+    <meta property="twitter:description" content="Modern, responsive ve SEO uyumlu web siteleri. E-ticaret, kurumsal website, portfolio tasarımı.">
+    <meta property="twitter:image" content="https://broxycode.netlify.app/assets/broxy-code-og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://broxycode.netlify.app/">
+
+    <!-- Alternate Language -->
+    <link rel="alternate" hreflang="tr" href="https://broxycode.netlify.app/">
+    <link rel="alternate" hreflang="en" href="https://broxycode.netlify.app/en/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//images.unsplash.com">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Broxy Code",
+      "alternateName": "Broxy Code Web Development",
+      "url": "https://broxycode.vercel.app",
+      "logo": "https://broxycode.vercel.app/assets/broxy-code-logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+90-552-001-7538",
+        "contactType": "customer service",
+        "areaServed": "TR",
+        "availableLanguage": ["Turkish", "English"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "TR",
+        "addressRegion": "Turkey"
+      },
+      "sameAs": [
+        "https://github.com/broxycode",
+        "https://linkedin.com/in/yilmaz-demircioglu"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Yılmaz Demircioğlu",
+        "jobTitle": "Web Developer & Founder",
+        "email": "yilma.0601z@gmail.com"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - Professional Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Broxy Code - Web Development Services",
+      "image": "https://broxycode.vercel.app/assets/broxy-code-og-image.jpg",
+      "description": "Professional web development services including e-commerce websites, corporate websites, and portfolio design. Modern, responsive, and SEO-optimized solutions.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Broxy Code"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Turkey"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "E-commerce Website Development",
+              "description": "Custom e-commerce solutions with payment integration and admin panels"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Corporate Website Design",
+              "description": "Professional corporate websites with CMS and SEO optimization"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Portfolio Website Creation",
+              "description": "Modern portfolio websites with responsive design and animations"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand broxy-logo" href="#home">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Broxy Code</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Hakkımda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portföy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">İletişim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html" target="_blank">
+                            <i class="fas fa-cog me-1"></i>Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+    <section id="home" class="hero-section" role="banner" aria-label="Broxy Code Ana Sayfa">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-3">
+                            <span class="text-primary">Broxy Code</span> - Türkiye'nin En İyi Web Geliştirme Hizmetleri
+                        </h1>
+                        <h2 class="h4 text-muted mb-4">Profesyonel Web Tasarım & Geliştirme | Yılmaz Demircioğlu</h2>
+                        <p class="lead mb-4">
+                            Modern, responsive ve SEO uyumlu web siteleri geliştiriyoruz. E-ticaret, kurumsal website ve portfolio tasarımında uzman.
+                            React, Node.js, HTML5, CSS3 ve JavaScript ile işletmenizi dijital dünyada öne çıkaracak profesyonel web çözümleri sunuyoruz.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#portfolio" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-eye me-2"></i>Çalışmalarımı Gör
+                            </a>
+                            <a href="#contact" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-phone me-2"></i>İletişime Geç
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image text-center">
+                        <div class="code-animation">
+                            <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80"
+                                 alt="Web Development" class="img-fluid rounded shadow-lg"
+                                 style="max-width: 400px; border-radius: 20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light" role="region" aria-labelledby="about-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 id="about-heading" class="display-5 fw-bold">Broxy Code Hakkında</h2>
+                    <p class="lead text-muted">Türkiye'nin En İyi Web Geliştirme Hizmetleri - Neden Broxy Code?</p>
+                    <div class="founder-info mt-4 p-4 bg-white rounded shadow-sm">
+                        <h3 class="text-primary">Yılmaz Demircioğlu</h3>
+                        <p class="text-muted mb-2">Kurucu & Senior Web Developer</p>
+                        <p class="small">Broxy Code'un kurucusu ve senior web geliştiricisi olarak, React, Node.js, HTML5, CSS3, JavaScript ve modern web teknolojileri ile e-ticaret, kurumsal website ve portfolio projelerinde uzmanım. Türkiye'de web development alanında profesyonel çözümler sunuyorum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card text-center p-4">
+                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                        <h4>Responsive Web Tasarım</h4>
+                        <p>Mobil uyumlu, tüm cihazlarda mükemmel görünen responsive web siteleri. HTML5, CSS3 ve Bootstrap ile modern tasarım çözümleri.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card text-center p-4">
+                        <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
+                        <h4>SEO Optimizasyonu & Performans</h4>
+                        <p>Google'da üst sıralarda yer alan, hızlı yüklenen ve SEO uyumlu web siteleri. Teknik SEO ve performans optimizasyonu dahil.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card text-center p-4">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h4>E-ticaret & Kurumsal Çözümler</h4>
+                        <p>E-ticaret siteleri, kurumsal web siteleri ve portfolio tasarımı. React, Node.js ve modern teknolojilerle özel çözümler.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Portföy</h2>
+                    <p class="lead text-muted">Son çalışmalarımdan örnekler</p>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="E-Ticaret Projesi" class="img-fluid rounded">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4>Modern E-Ticaret Sitesi</h4>
+                                    <p>Responsive tasarım, ödeme sistemi entegrasyonu</p>
+                                    <div class="portfolio-tech">
+                                        <span class="badge bg-primary me-1">HTML5</span>
+                                        <span class="badge bg-primary me-1">CSS3</span>
+                                        <span class="badge bg-primary me-1">JavaScript</span>
+                                        <span class="badge bg-primary">Bootstrap</span>
+                                    </div>
+                                    <button class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#modal1">
+                                        <i class="fas fa-info-circle me-2"></i>Detayları Gör
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="Kurumsal Website Projesi" class="img-fluid rounded">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4>Kurumsal Website</h4>
+                                    <p>SEO optimizasyonu, hızlı yükleme, modern tasarım</p>
+                                    <div class="portfolio-tech">
+                                        <span class="badge bg-success me-1">HTML5</span>
+                                        <span class="badge bg-success me-1">CSS3</span>
+                                        <span class="badge bg-success me-1">jQuery</span>
+                                        <span class="badge bg-success">WordPress</span>
+                                    </div>
+                                    <button class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#modal2">
+                                        <i class="fas fa-info-circle me-2"></i>Detayları Gör
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="Restaurant Website Projesi" class="img-fluid rounded">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4>Restaurant Website</h4>
+                                    <p>Online rezervasyon sistemi, menü yönetimi</p>
+                                    <div class="portfolio-tech">
+                                        <span class="badge bg-warning me-1">HTML5</span>
+                                        <span class="badge bg-warning me-1">CSS3</span>
+                                        <span class="badge bg-warning me-1">PHP</span>
+                                        <span class="badge bg-warning">MySQL</span>
+                                    </div>
+                                    <button class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#modal3">
+                                        <i class="fas fa-info-circle me-2"></i>Detayları Gör
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="Portfolio Website Projesi" class="img-fluid rounded">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-content">
+                                    <h4>Kişisel Portfolio</h4>
+                                    <p>Modern tasarım, animasyonlar, admin paneli</p>
+                                    <div class="portfolio-tech">
+                                        <span class="badge bg-info me-1">React</span>
+                                        <span class="badge bg-info me-1">Node.js</span>
+                                        <span class="badge bg-info me-1">MongoDB</span>
+                                        <span class="badge bg-info">Express</span>
+                                    </div>
+                                    <button class="btn btn-light mt-3" data-bs-toggle="modal" data-bs-target="#modal4">
+                                        <i class="fas fa-info-circle me-2"></i>Detayları Gör
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">İletişim</h2>
+                    <p class="lead">Projenizi konuşmak için bizimle iletişime geçin</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-info">
+                        <h4 class="mb-4">İletişim Bilgileri</h4>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-phone fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5>Telefon</h5>
+                                <p class="mb-0">05520017538</p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-envelope fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5>E-posta</h5>
+                                <p class="mb-0">yilma.0601z@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5>Konum</h5>
+                                <p class="mb-0">Türkiye</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Adınız" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="E-posta Adresiniz" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Telefon Numaranız">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Mesajınız" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Mesaj Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal 1 - E-Ticaret -->
+    <div class="modal fade" id="modal1" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modern E-Ticaret Sitesi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="E-Ticaret Sitesi" class="img-fluid rounded mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">Proje Bilgileri</h6>
+                            <p><strong>Müşteri:</strong> TechStore A.Ş.</p>
+                            <p><strong>Süre:</strong> 6 hafta</p>
+                            <p><strong>Yıl:</strong> 2024</p>
+                            <div class="mb-3">
+                                <strong>Teknolojiler:</strong><br>
+                                <span class="badge bg-primary me-1 mb-1">HTML5</span>
+                                <span class="badge bg-primary me-1 mb-1">CSS3</span>
+                                <span class="badge bg-primary me-1 mb-1">JavaScript</span>
+                                <span class="badge bg-primary me-1 mb-1">Bootstrap</span>
+                                <span class="badge bg-primary me-1 mb-1">PHP</span>
+                                <span class="badge bg-primary me-1 mb-1">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Proje Açıklaması</h6>
+                            <p>Responsive tasarım, ödeme sistemi entegrasyonu, admin paneli ve stok yönetimi ile tam özellikli e-ticaret platformu.</p>
+                            <h6 class="text-primary mb-3 mt-4">Özellikler</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Responsive mobil uyumlu tasarım</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Güvenli ödeme sistemi entegrasyonu</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Ürün katalog yönetimi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Kullanıcı hesap sistemi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Sipariş takip sistemi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Admin dashboard</li>
+                                <li><i class="fas fa-check text-success me-2"></i>SEO optimizasyonu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <a href="demo-ecommerce.html" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt me-2"></i>Canlı Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 - Kurumsal -->
+    <div class="modal fade" id="modal2" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kurumsal Website</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="Kurumsal Website" class="img-fluid rounded mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">Proje Bilgileri</h6>
+                            <p><strong>Müşteri:</strong> İnovasyon Teknoloji Ltd.</p>
+                            <p><strong>Süre:</strong> 4 hafta</p>
+                            <p><strong>Yıl:</strong> 2024</p>
+                            <div class="mb-3">
+                                <strong>Teknolojiler:</strong><br>
+                                <span class="badge bg-success me-1 mb-1">HTML5</span>
+                                <span class="badge bg-success me-1 mb-1">CSS3</span>
+                                <span class="badge bg-success me-1 mb-1">jQuery</span>
+                                <span class="badge bg-success me-1 mb-1">Bootstrap</span>
+                                <span class="badge bg-success me-1 mb-1">WordPress</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Proje Açıklaması</h6>
+                            <p>SEO optimizasyonu, hızlı yükleme, modern tasarım ve içerik yönetim sistemi ile profesyonel kurumsal web sitesi.</p>
+                            <h6 class="text-primary mb-3 mt-4">Özellikler</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Modern ve profesyonel tasarım</li>
+                                <li><i class="fas fa-check text-success me-2"></i>İçerik yönetim sistemi (CMS)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Çoklu dil desteği</li>
+                                <li><i class="fas fa-check text-success me-2"></i>İletişim formu entegrasyonu</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Google Analytics entegrasyonu</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Sosyal medya entegrasyonu</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Hızlı yükleme optimizasyonu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <a href="demo-corporate.html" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt me-2"></i>Canlı Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 - Restaurant -->
+    <div class="modal fade" id="modal3" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Restaurant Website</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="Restaurant Website" class="img-fluid rounded mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">Proje Bilgileri</h6>
+                            <p><strong>Müşteri:</strong> Lezzet Durağı Restaurant</p>
+                            <p><strong>Süre:</strong> 3 hafta</p>
+                            <p><strong>Yıl:</strong> 2024</p>
+                            <div class="mb-3">
+                                <strong>Teknolojiler:</strong><br>
+                                <span class="badge bg-warning me-1 mb-1">HTML5</span>
+                                <span class="badge bg-warning me-1 mb-1">CSS3</span>
+                                <span class="badge bg-warning me-1 mb-1">PHP</span>
+                                <span class="badge bg-warning me-1 mb-1">MySQL</span>
+                                <span class="badge bg-warning me-1 mb-1">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Proje Açıklaması</h6>
+                            <p>Online rezervasyon sistemi, menü yönetimi, mobil uyumlu tasarım ve sosyal medya entegrasyonu ile restaurant web sitesi.</p>
+                            <h6 class="text-primary mb-3 mt-4">Özellikler</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Online rezervasyon sistemi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dijital menü yönetimi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Galeri ve fotoğraf showcase</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Konum ve harita entegrasyonu</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Sosyal medya entegrasyonu</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Mobil uyumlu responsive tasarım</li>
+                                <li><i class="fas fa-check text-success me-2"></i>WhatsApp sipariş entegrasyonu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <a href="demo-restaurant.html" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt me-2"></i>Canlı Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 - Portfolio -->
+    <div class="modal fade" id="modal4" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kişisel Portfolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                 alt="Portfolio Website" class="img-fluid rounded mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">Proje Bilgileri</h6>
+                            <p><strong>Müşteri:</strong> Freelance Developer</p>
+                            <p><strong>Süre:</strong> 5 hafta</p>
+                            <p><strong>Yıl:</strong> 2024</p>
+                            <div class="mb-3">
+                                <strong>Teknolojiler:</strong><br>
+                                <span class="badge bg-info me-1 mb-1">React</span>
+                                <span class="badge bg-info me-1 mb-1">Node.js</span>
+                                <span class="badge bg-info me-1 mb-1">MongoDB</span>
+                                <span class="badge bg-info me-1 mb-1">Express</span>
+                                <span class="badge bg-info me-1 mb-1">CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">Proje Açıklaması</h6>
+                            <p>Modern tasarım, animasyonlar, admin paneli, blog sistemi ve proje showcase ile kişisel portfolio web sitesi.</p>
+                            <h6 class="text-primary mb-3 mt-4">Özellikler</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Modern React tabanlı SPA</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dinamik proje showcase</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Blog yazma sistemi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Admin panel ile içerik yönetimi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>İletişim formu ve mesajlaşma</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Smooth animasyonlar</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dark/Light tema desteği</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <a href="demo-portfolio.html" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt me-2"></i>Canlı Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4" role="contentinfo">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Broxy Code - Yılmaz Demircioğlu. Tüm hakları saklıdır.</p>
+            <p class="mb-0">Profesyonel web tasarım ve geliştirme hizmetleri | Web Developer Turkey | E-ticaret & Kurumsal Website</p>
+            <p class="small mt-2">
+                <a href="tel:+905520017538" class="text-light me-3">📞 +90 552 001 75 38</a>
+                <a href="mailto:yilma.0601z@gmail.com" class="text-light">✉️ yilma.0601z@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
